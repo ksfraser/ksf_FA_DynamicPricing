@@ -173,7 +173,7 @@ Example: Buy 2 Get 1 Free
 
 ### 5.1 Primary Tables
 
-#### `fa_pricing_rules`
+#### `ksf_dynamicpricing_pricing_rules`
 Stores pricing rule definitions.
 
 | Column | Type | Description |

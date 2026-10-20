@@ -33,7 +33,7 @@ This separation allows the pricing engine core to be reused across platforms.
 ```
 ksf_FA_DynamicPricing/
 ├── sql/                          # Database schemas
-│   ├── fa_pricing_rules.sql      # Rule definitions
+│   ├── ksf_dynamicpricing_pricing_rules.sql      # Rule definitions
 │   ├── fa_pricing_conditions.sql # Condition configs
 │   └── fa_pricing_applications.sql # Application logs
 ├── includes/                     # FA-specific database classes
@@ -117,7 +117,7 @@ ksf_FA_DynamicPricing/
 
 ```
 ┌─────────────────────┐         ┌─────────────────────────┐
-│  fa_pricing_rules   │         │ fa_pricing_conditions   │
+│  ksf_dynamicpricing_pricing_rules   │         │ fa_pricing_conditions   │
 ├─────────────────────┤         ├─────────────────────────┤
 │ PK rule_id          │──────┐  │ PK condition_id         │
 │    rule_name        │      │  │ FK rule_id         ─────┘

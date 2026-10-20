@@ -22,7 +22,7 @@ function dynamic_pricing_main() {
  * Display all pricing rules in a table
  */
 function display_pricing_rules_table() {
-    $sql = "SELECT * FROM fa_pricing_rules WHERE 1=1 ORDER BY priority ASC, created_at DESC";
+    $sql = "SELECT * FROM ksf_dynamicpricing_pricing_rules WHERE 1=1 ORDER BY priority ASC, created_at DESC";
     $result = db_query($sql, "Could not get pricing rules");
     
     start_table(TABLESTYLE);
@@ -79,7 +79,7 @@ function dynamic_pricing_edit($rule_id = 0) {
         ];
         
         if ($rule_id) {
-            $sql = "UPDATE fa_pricing_rules SET 
+            $sql = "UPDATE ksf_dynamicpricing_pricing_rules SET 
                     rule_type=" . db_escape($data['rule_type']) . ",
                     title=" . db_escape($data['title']) . ",
                     priority=" . (int)$data['priority'] . ",
@@ -91,7 +91,7 @@ function dynamic_pricing_edit($rule_id = 0) {
             db_query($sql, "Could not update pricing rule");
             display_notification(_('Pricing rule updated successfully'));
         } else {
-            $sql = "INSERT INTO fa_pricing_rules 
+            $sql = "INSERT INTO ksf_dynamicpricing_pricing_rules 
                     (rule_type, title, priority, stop_processing, conditions, config, enabled, created_at)
                     VALUES (
                     " . db_escape($data['rule_type']) . ",
@@ -111,7 +111,7 @@ function dynamic_pricing_edit($rule_id = 0) {
     // Get existing rule if editing
     $rule = [];
     if ($rule_id) {
-        $sql = "SELECT * FROM fa_pricing_rules WHERE id=" . (int)$rule_id;
+        $sql = "SELECT * FROM ksf_dynamicpricing_pricing_rules WHERE id=" . (int)$rule_id;
         $result = db_query($sql, "Could not get pricing rule");
         $rule = db_fetch($result);
         $rule['conditions'] = json_decode($rule['conditions'], true);
@@ -156,7 +156,7 @@ function dynamic_pricing_edit($rule_id = 0) {
  */
 function dynamic_pricing_delete($rule_id) {
     if (isset($_POST['confirm_delete'])) {
-        $sql = "DELETE FROM fa_pricing_rules WHERE id=" . (int)$rule_id;
+        $sql = "DELETE FROM ksf_dynamicpricing_pricing_rules WHERE id=" . (int)$rule_id;
         db_query($sql, "Could not delete pricing rule");
         display_notification(_('Pricing rule deleted successfully'));
         meta_forward('dynamic_pricing_main.php');
@@ -164,7 +164,7 @@ function dynamic_pricing_delete($rule_id) {
     
     page(_($help_context = "Delete Pricing Rule"));
     
-    $sql = "SELECT title FROM fa_pricing_rules WHERE id=" . (int)$rule_id;
+    $sql = "SELECT title FROM ksf_dynamicpricing_pricing_rules WHERE id=" . (int)$rule_id;
     $result = db_query($sql, "Could not get pricing rule");
     $rule = db_fetch($result);
     

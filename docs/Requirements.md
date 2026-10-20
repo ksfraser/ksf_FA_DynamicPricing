@@ -6,7 +6,7 @@
 
 #### FR-1: Pricing Rules Management
 - **FR-1.1**: Admin must be able to create pricing rules via UI
-- **FR-1.2**: Rules must be stored in fa_pricing_rules table
+- **FR-1.2**: Rules must be stored in ksf_dynamicpricing_pricing_rules table
 - **FR-1.3**: Admin must be able to set rule priority
 - **FR-1.4**: Admin must be able to enable/disable rules
 
