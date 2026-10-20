@@ -8,7 +8,7 @@ This repository implements **Dynamic Pricing Engine** extracted from WooCommerce
 ```
 ksf_FA_DynamicPricing/
 ├── sql/                    # Database schemas (FA TB_PREF tables)
-│   ├── fa_pricing_rules.sql
+│   ├── ksf_dynamicpricing_pricing_rules.sql
 │   ├── fa_pricing_conditions.sql
 │   └── fa_pricing_applications.sql
 ├── includes/              # FA-specific DB classes
